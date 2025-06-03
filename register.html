@@ -1,62 +1,87 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>User Registration</title>
+  <title>Register</title>
   <style>
     body {
-      font-family: Arial;
-      background: #f0f0f0;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f2f2f2;
     }
-    .container {
+
+    .register-box {
       background: white;
       padding: 30px;
       border-radius: 10px;
       box-shadow: 0 0 10px #ccc;
+      width: 300px;
     }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
     input, button {
       display: block;
       width: 100%;
       margin: 10px 0;
       padding: 10px;
+      font-size: 16px;
     }
+
     button {
-      background: #00bcd4;
+      background: #4CAF50;
       color: white;
       border: none;
       cursor: pointer;
     }
+
+    button:hover {
+      background: #45a049;
+    }
+
+    p {
+      text-align: center;
+    }
+
+    a {
+      color: #2196F3;
+      text-decoration: none;
+    }
   </style>
 </head>
 <body>
-  <div class="container">
+
+  <div class="register-box">
     <h2>Register</h2>
-    <input type="text" id="username" placeholder="Username">
-    <input type="text" id="phone" placeholder="Phone Number">
-    <input type="password" id="password" placeholder="Password">
+    <input type="text" id="regUsername" placeholder="Username" required>
+    <input type="password" id="regPassword" placeholder="Password" required>
     <button onclick="register()">Register</button>
-    <p>Already have an account? <a href="index.html">Login</a></p>
+    <p>Already have an account? <a href="login.html">Login</a></p>
   </div>
 
   <script>
     function register() {
-      const username = document.getElementById('username').value;
-      const phone = document.getElementById('phone').value;
-      const password = document.getElementById('password').value;
+      const username = document.getElementById("regUsername").value;
+      const password = document.getElementById("regPassword").value;
 
-      if (username && phone && password) {
-        localStorage.setItem('username', username);
-        localStorage.setItem('phone', phone);
-        localStorage.setItem('password', password);
-        alert('Registration successful!');
-        window.location.href = "index.html";
-      } else {
-        alert("Please fill all fields.");
+      if (username === "" || password === "") {
+        alert("Please fill all fields!");
+        return;
       }
+
+      localStorage.setItem("username", username);
+      localStorage.setItem("password", password);
+
+      alert("Registration successful!");
+      window.location.href = "login.html";
     }
   </script>
+
 </body>
 </html>
